@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { cleanObject, useMount, useDebounce } from "utils";
 import * as qs from "qs";
 import { useHttp } from "utils/http";
+import styled from "@emotion/styled";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 export const ProjectListScreen = () => {
@@ -24,9 +25,14 @@ export const ProjectListScreen = () => {
     client("users", {}).then(setUsers);
   });
   return (
-    <div>
+    <Container>
+      <h1>项目列表</h1>
       <SearchPanel users={users} param={params} setParams={setParams} />
       <List users={users} list={list} />
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  padding: 3.2rem;
+`;
