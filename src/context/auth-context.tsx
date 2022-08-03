@@ -1,4 +1,4 @@
-import { FullPageFallback, FullPageLoading } from "components/lib";
+import { FullPageErrorFallback, FullPageLoading } from "components/lib";
 import React, { ReactNode, useState } from "react";
 import { User } from "screens/project-list/search-panel";
 import { useMount } from "utils";
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }
 
   if (isError) {
-    return <FullPageFallback error={error} />;
+    return <FullPageErrorFallback error={error} />;
   }
 
   return (
