@@ -1,11 +1,10 @@
 import { SearchPanel } from "./search-panel";
 import { List, Project } from "./list";
 import React, { useEffect, useState } from "react";
-import { cleanObject, useMount, useDebounce } from "utils";
+import { cleanObject, useMount, useDebounce, useDocumentTitle } from "utils";
 import * as qs from "qs";
 import { useHttp } from "utils/http";
 import styled from "@emotion/styled";
-import { useAsync } from "utils/use-async";
 import { useProjects } from "utils/project";
 import { useUser } from "utils/user";
 import { Typography } from "antd";
@@ -17,6 +16,8 @@ export const ProjectListScreen = () => {
     personId: "",
   });
   const debouncedParams = useDebounce(params, 200);
+
+  useDocumentTitle("项目列表", false);
 
   const { isLoading, error, data: list } = useProjects(debouncedParams);
 
